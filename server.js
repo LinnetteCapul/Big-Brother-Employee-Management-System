@@ -9,7 +9,7 @@ const db = mysql.createConnection(
       password: "appa247",
       database: "employee_db",
     },
-    console.log(`Connected to the employee database.`)
+    console.log(`Connected to the employee database. Remember, Big Brother is watching.`)
   );
 
 function mainMenu() {
@@ -31,7 +31,7 @@ function mainMenu() {
                 ],
             },
         ])
-        .then((choice) => {
+        .then((answers) => {
             switch (choice.menuChoices) {
                 case "View all departments": 
                     return viewAllDepts();
@@ -51,4 +51,43 @@ function mainMenu() {
                     process.exit()
             }
         });
+}
+
+function viewAllDepts() {
+    const sql = "SELECT id AS id, name AS department ORDER BY department.name";
+
+    db.query(sql, (err, rows) => {
+        if (err) {
+            console.log(err);
+            return;
+        }
+        console.table(rows);
+        mainMenu();
+    })
+}
+
+function viewAllRoles() {
+    const sql = "SELECT * FROM roles JOIN department ON role.department_id = department.id";
+
+    db.query(sql, (err, rows) => {
+        if (err) {
+            console.log(err);
+            return;
+        }
+        console.table(rows);
+        mainMenu();
+    })
+}
+
+function viewAllEmployees() {
+    const sql = "SELECT * FROM employee JOIN roles ON employee.roles_id = roles.id"
+
+    db.query(sql, (err, rows) => {
+        if (err) {
+            console.log(err);
+            return;
+        }
+        console.table(rows);
+        mainMenu();
+    })
 }
