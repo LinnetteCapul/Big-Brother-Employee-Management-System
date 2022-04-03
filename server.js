@@ -67,7 +67,7 @@ function viewAllDepts() {
 }
 
 function viewAllRoles() {
-    const sql = `SELECT * FROM roles JOIN department ON role.department_id = department.id`;
+    const sql = `SELECT * FROM roles JOIN department ON roles.department_id = department.id`;
 
     db.query(sql, (err, rows) => {
         if (err) {
