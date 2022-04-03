@@ -67,7 +67,7 @@ function viewAllDepts() {
 }
 
 function viewAllRoles() {
-    const sql = `SELECT * FROM roles JOIN department ON role.department_id = department.id`;
+    const sql = `SELECT * FROM roles JOIN department ON roles.department_id = department.id`;
 
     db.query(sql, (err, rows) => {
         if (err) {
@@ -137,7 +137,7 @@ function addRole() {
             },
         ])
         .then((answers) => {
-            const sql = ` INSERT INTO roles (title, salary, department_id) VALUES(?, ?, ?)`;
+            const sql = `INSERT INTO roles (title, salary, department_id) VALUES(?, ?, ?)`;
             const params = [
                 answers.addRole,
                 answers.roleSalary,
@@ -181,7 +181,7 @@ function addEmployee() {
             }
         ])
         .then(answers => {
-            const sql = ` INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES(?, ?, ?, ?)`;
+            const sql = `INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES(?, ?, ?, ?)`;
             const params = [
                 answers.firstName,
                 answers.lastName,
@@ -198,3 +198,42 @@ function addEmployee() {
         });
     });
 }
+
+function updateEmployRole() {
+    inquirer
+        .prompt([
+            {
+                type: "list",
+                name: "selectEmployee",
+                message: "Which employee would you like to update information?",
+                choices: employee
+            },
+            {
+                type: "list",
+                name: "updateRole",
+                message: "What role do you want to reassign to this employee?",
+                choices: roles
+            },
+        ])
+        .then(answers => {
+            const sql = `UPDATE employee SET roles_id = ? WHERE id = ?`;
+            const params = [
+                answers.selectEmployee,
+                answers.updateRole
+            ];
+        db.query(sql, params, (err, result) => {
+            if (err) {
+                console.log(err)
+                return;
+            }
+            console.info(`Successfully updated employee role to the employee database!`)
+            mainMenu();
+        });
+    });
+}
+
+function init() {
+    mainMenu();
+}
+
+init();
