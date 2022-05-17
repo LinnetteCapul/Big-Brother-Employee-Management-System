@@ -1,19 +1,18 @@
 # Big Brother Employee Tracker
 
-A command-line application to view and manage the departments, roles, and employees in ancompany database. 
+A command-line application to view and manage the departments, roles, and employees in ancompany database.
 
         Remember, Big Brother is always watching. 👀
 
 ## Table of Contents
 
-* [Installation](#installation)
-* [Usage](#usage)
-* [Contribution](#contribution)
-* [Tests](#tests)
-* [Links](#links)
-* [Screenshots](#screenshots)
-* [Questions](#questions)
-
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contribution](#contribution)
+- [Tests](#tests)
+- [Links](#links)
+- [Screenshots](#screenshots)
+- [Questions](#questions)
 
 ## Installation
 
@@ -21,7 +20,7 @@ In order to use this application, the user will first have to git clone the repo
 
 ## Usage
 
-The purpose of this application is to allow a company to be able to access their employee database using Node.js to view and change the departments, roles, and employee information when neccessary. 
+The purpose of this application is to allow a company to be able to access their employee database using Node.js to view and change the departments, roles, and employee information when neccessary.
 
 ## Contribution
 
@@ -29,30 +28,28 @@ If you would like to contribute to this application, please reach out to the fol
 
 ## Tests
 
-`npm run start` 
+`npm run start`
 
 ## Links
 
-* GitHub Repository: https://github.com/LinnetteCapul/Big-Brother-Employee-Tracker
-* Demonstration Video: 
-
+- GitHub Repository: https://github.com/LinnetteCapul/Big-Brother-Employee-Tracker
+- Demonstration Video: https://drive.google.com/file/d/1j5LXK1Z_2WiPCbmikMYK4maq4lu22quF/view
 
 ## Screenshots
 
-![]()
-
-
-<br>
-
-![]()
-
+![employee-tracker-screenshot01]()
+Opening Menu of back-end employee tracker after `npm run start`.
 
 <br>
 
+![employee-tracker-screenshot02]()
+Application displaying all departments, roles, and employees in employee tracker database.
+
+<br>
 
 ## Questions
 
-For inquries regarding this employee database application including questions and contribution guidelines, please contact me at any of the communication forms below: 
+For inquries regarding this employee database application including questions and contribution guidelines, please contact me at any of the communication forms below:
 
-* GitHub Profile: [LinnetteCapul](https://github.com/LinnetteCapul)
-* Email: linnette.capul@gmail.com
+- GitHub Profile: [LinnetteCapul](https://github.com/LinnetteCapul)
+- Email: linnette.capul@gmail.com
