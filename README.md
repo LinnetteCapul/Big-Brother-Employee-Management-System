@@ -16,7 +16,7 @@ A command-line application to view and manage the departments, roles, and employ
 
 ## Installation
 
-In order to use this application, the user will first have to git clone the repository onto their local computer.
+In order to use this application, the user will first have to `git clone` the repository onto their local computer, run seeds in MySql, and finally `npm run start` in the terminal.
 
 ## Usage
 
@@ -37,12 +37,12 @@ If you would like to contribute to this application, please reach out to the fol
 
 ## Screenshots
 
-![employee-tracker-screenshot01]()
+![employee-tracker-screenshot01](https://raw.githubusercontent.com/LinnetteCapul/Big-Brother-Employee-Tracker/main/assets/images/employee-tracker-screenshot01.JPG)
 Opening Menu of back-end employee tracker after `npm run start`.
 
 <br>
 
-![employee-tracker-screenshot02]()
+![employee-tracker-screenshot02](https://raw.githubusercontent.com/LinnetteCapul/Big-Brother-Employee-Tracker/main/assets/images/employee-tracker-screenshot02.JPG)
 Application displaying all departments, roles, and employees in employee tracker database.
 
 <br>
