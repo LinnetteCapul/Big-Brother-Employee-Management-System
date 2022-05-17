@@ -2,7 +2,7 @@
 
 A command-line application to view and manage the departments, roles, and employees in ancompany database. 
 
-        Remember, Big Brother is always watching. 
+        Remember, Big Brother is always watching. 👀
 
 ## Table of Contents
 
