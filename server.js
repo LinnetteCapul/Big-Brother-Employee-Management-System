@@ -1,16 +1,17 @@
 const mysql = require("mysql2");
 const inquirer = require("inquirer");
-require("console.table");
+const consoleTable = require('console.table');
+
 
 const db = mysql.createConnection(
     {
-      host: "localhost",
-      user: "root",
-      password: "appa247",
-      database: "employee_db",
+        host: "localhost",
+        user: "root",
+        password: "appa247",
+        database: "employee_db",
     },
     console.log(`Connected to the employee database. Remember, Big Brother is watching.`)
-  );
+);
 
 function mainMenu() {
     inquirer
@@ -32,8 +33,8 @@ function mainMenu() {
             },
         ])
         .then((answers) => {
-            switch (choice.menuChoices) {
-                case "View all departments": 
+            switch (answers.menuChoices) {
+                case "View all departments":
                     return viewAllDepts();
                 case "View all roles":
                     return viewAllRoles();
@@ -54,7 +55,7 @@ function mainMenu() {
 }
 
 function viewAllDepts() {
-    const sql = `SELECT id AS id, name AS department ORDER BY department.name`;
+    const sql = `SELECT id AS id, name AS department FROM department ORDER BY department.name`;
 
     db.query(sql, (err, rows) => {
         if (err) {
@@ -102,18 +103,18 @@ function addDept() {
             },
         ])
         .then(answers => {
-            const sql = `INSERT INTO department(name) VALUES(?)`;
+            const sql = `INSERT INTO department(name) VALUES (?)`;
             const params = answers.addDept;
-            
-        db.query(sql, (err, result) => {
-            if (err) {
-                console.log(err);
-                return;
-            }
-            console.log(`Successfully added new department to the employee database!`);
-            mainMenu();
+
+            db.query(sql, params, (err, result) => {
+                if (err) {
+                    console.log(err);
+                    return;
+                }
+                console.log(`Successfully added new department to the employee database!`);
+                mainMenu();
+            });
         });
-    });
 }
 
 function addRole() {
@@ -133,7 +134,7 @@ function addRole() {
                 type: "list",
                 name: "roleDept",
                 message: "Which department does the new role belong to?",
-                choices: department,
+                choices: getDepartment,
             },
         ])
         .then((answers) => {
@@ -143,15 +144,15 @@ function addRole() {
                 answers.roleSalary,
                 answers.roleDept,
             ];
-        db.query(sql, (err, result) => {
-            if (err) {
-                console.log(err);
-                return;
-            }
-            console.log(`Successfully added new role to the employee database!`);
-            mainMenu();
+            db.query(sql, params, (err, result) => {
+                if (err) {
+                    console.log(err);
+                    return;
+                }
+                console.log(`Successfully added new role to the employee database!`);
+                mainMenu();
+            });
         });
-    });
 }
 
 function addEmployee() {
@@ -188,15 +189,15 @@ function addEmployee() {
                 answers.employeeRole,
                 answers.employeeManager
             ];
-        db.query(sql, (err, result) => {
-            if (err) {
-                console.log(err);
-                return;
-            }
-            console.log(`Successfully added new employee to the employee database!`);
-            mainMenu();
+            db.query(sql, params, (err, result) => {
+                if (err) {
+                    console.log(err);
+                    return;
+                }
+                console.log(`Successfully added new employee to the employee database!`);
+                mainMenu();
+            });
         });
-    });
 }
 
 function updateEmployRole() {
@@ -221,15 +222,15 @@ function updateEmployRole() {
                 answers.selectEmployee,
                 answers.updateRole
             ];
-        db.query(sql, params, (err, result) => {
-            if (err) {
-                console.log(err)
-                return;
-            }
-            console.info(`Successfully updated employee role to the employee database!`)
-            mainMenu();
+            db.query(sql, params, (err, result) => {
+                if (err) {
+                    console.log(err)
+                    return;
+                }
+                console.info(`Successfully updated employee role to the employee database!`)
+                mainMenu();
+            });
         });
-    });
 }
 
 function init() {
